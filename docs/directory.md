@@ -2,7 +2,7 @@
 
 本项目遵循 [project-layout](https://github.com/golang-standards/project-layout) 目录规范。
 
-跟 project-layout 目录规范唯一不一样的地方是，miniblog 将具体的实现目录 `solocms` 放在 `internal/` 目录下，而非 `internal/app/` 目录下，例如：
+跟 project-layout 目录规范唯一不一样的地方是，solocms 将具体的实现目录 `solocms` 放在 `internal/` 目录下，而非 `internal/app/` 目录下，例如：
 
 ```bash
 $ ls internal/
