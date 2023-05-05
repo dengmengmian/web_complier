@@ -65,6 +65,9 @@ Find more solocms information at:
 	// Cobra 也支持本地标志，本地标志只能在其所绑定的命令上使用
 	cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
+	// 添加 --version 标志
+	verflag.AddFlags(cmd.PersistentFlags())
+
 	return cmd
 }
 
