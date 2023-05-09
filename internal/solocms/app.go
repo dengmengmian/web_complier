@@ -12,6 +12,8 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"solocms/internal/pkg/core"
+	"solocms/internal/pkg/errno"
 	"solocms/internal/pkg/log"
 	mw "solocms/internal/pkg/middleware"
 	"solocms/pkg/version/verflag"
@@ -95,14 +97,14 @@ func run() error {
 
 	// 注册 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"code": 10003, "message": "Page not found."})
+		core.WriteResponse(c, errno.ErrPageNotFound, nil)
 	})
 
 	// 注册 /healthz handler.
 	g.GET("/healthz", func(c *gin.Context) {
 		log.C(c).Infow("Healthz function called")
 
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+		core.WriteResponse(c, nil, map[string]string{"status": "ok"})
 	})
 
 	// 创建 HTTP Server 实例
