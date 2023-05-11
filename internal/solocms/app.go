@@ -12,8 +12,10 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"solocms/internal/pkg/known"
 	"solocms/internal/pkg/log"
 	mw "solocms/internal/pkg/middleware"
+	"solocms/pkg/token"
 	"solocms/pkg/version/verflag"
 	"syscall"
 	"time"
@@ -86,6 +88,9 @@ func run() error {
 	if err := initStore(); err != nil {
 		return err
 	}
+
+	// 设置 token 包的签发密钥，用于 token 包 token 的签发和解析
+	token.Init(viper.GetString("jwt-secret"), known.XUsernameKey)
 
 	// 设置 Gin 模式
 	gin.SetMode(viper.GetString("runmode"))
