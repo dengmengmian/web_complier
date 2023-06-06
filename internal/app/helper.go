@@ -1,17 +1,17 @@
 // Copyright 2023 Innkeeper dengmengmian(麻凡) <my@dengmengmian.com>. All rights reserved.
 // Use of this source code is governed by a Apache style
 // license that can be found in the LICENSE file. The original repo for
-// this file is https://github.com/dengmengmian/solocms
+// this file is https://github.com/dengmengmian/web_complier
 
-package solocms
+package web_complier
 
 import (
 	"os"
 	"path/filepath"
-	"solocms/internal/pkg/log"
-	"solocms/internal/solocms/store"
-	"solocms/pkg/db"
 	"strings"
+	"web_complier/internal/app/store"
+	"web_complier/internal/pkg/log"
+	"web_complier/pkg/db"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -19,9 +19,9 @@ import (
 
 const (
 	// recommendedHomeDir 服务配置的默认目录.
-	recommendedHomeDir = ".solocms"
+	recommendedHomeDir = ".web_complier"
 	// defaultConfigName 服务的默认配置文件名.
-	defaultConfigName = "solocms.yaml"
+	defaultConfigName = "web_complier.yaml"
 )
 
 // initConfig 设置需要读取的配置文件名、环境变量，并读取配置文件内容到 viper 中.
@@ -51,8 +51,8 @@ func initConfig() {
 	// 读取匹配的环境变量
 	viper.AutomaticEnv()
 
-	// 读取环境变量的前缀为 SOLOCMS，如果是 solocms，将自动转变为大写。
-	viper.SetEnvPrefix("SOLOCMS")
+	// 读取环境变量的前缀为 web_complier，如果是 web_complier，将自动转变为大写。
+	viper.SetEnvPrefix("web_complier")
 
 	// 以下 2 行，将 viper.Get(key) key 字符串中 '.' 和 '-' 替换为 '_'
 	replacer := strings.NewReplacer(".", "_")

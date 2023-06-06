@@ -3,19 +3,9 @@
 // license that can be found in the LICENSE file. The original repo for
 // this file is https://github.com/dengmengmian/web_complier
 
-package id
+package errno
 
-import (
-	"strings"
+var (
+	// ErrLangNotFound 不支持该语言
+	ErrLangNotFound = &Errno{HTTP: 404, Code: "FailedRun.ErrLangNotFound", Message: "lang was not found"}
 )
-
-// GenShortID 生成 6 位字符长度的唯一 ID.
-func GenShortID() string {
-	opt := Options{
-		Number:        4,
-		StartWithYear: true,
-		EndWithHost:   false,
-	}
-
-	return strings.ToLower(Generate(opt))
-}

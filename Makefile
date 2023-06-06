@@ -11,7 +11,7 @@ OUTPUT_DIR := $(ROOT_DIR)/_output
 # 定义版本相关变量
 
 ## 指定应用使用的 version 包，会通过 `-ldflags -X` 向该包中指定的变量注入值
-VERSION_PACKAGE=github.com/marmotedu/solocms/pkg/version
+VERSION_PACKAGE=github.com/dengmengmian/web_complier/pkg/version
 
 ## 定义 VERSION 语义化版本号
 ifeq ($(origin VERSION), undefined)
@@ -41,7 +41,7 @@ all: add-copyright format build
 
 .PHONY: build
 build: tidy # 编译源码，依赖 tidy 目标自动添加/移除依赖包.
-	@go build -v -ldflags "$(GO_LDFLAGS)" -o $(OUTPUT_DIR)/solocms $(ROOT_DIR)/cmd/solocms/main.go
+	@go build -v -ldflags "$(GO_LDFLAGS)" -o $(OUTPUT_DIR)/web_complier $(ROOT_DIR)/cmd/web_complier/main.go
 
 .PHONY: format
 format: # 格式化 Go 源码.

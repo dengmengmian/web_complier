@@ -1,9 +1,9 @@
 // Copyright 2023 Innkeeper dengmengmian(麻凡) <my@dengmengmian.com>. All rights reserved.
 // Use of this source code is governed by a Apache style
 // license that can be found in the LICENSE file. The original repo for
-// this file is https://github.com/dengmengmian/solocms
+// this file is https://github.com/dengmengmian/web_complier
 
-package solocms
+package web_complier
 
 import (
 	"context"
@@ -12,13 +12,13 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"solocms/internal/pkg/known"
-	"solocms/internal/pkg/log"
-	mw "solocms/internal/pkg/middleware"
-	"solocms/pkg/token"
-	"solocms/pkg/version/verflag"
 	"syscall"
 	"time"
+	"web_complier/internal/pkg/known"
+	"web_complier/internal/pkg/log"
+	mw "web_complier/internal/pkg/middleware"
+	"web_complier/pkg/token"
+	"web_complier/pkg/version/verflag"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
@@ -27,18 +27,18 @@ import (
 
 var cfgFile string
 
-// NewsolocmsCommand 创建一个 *cobra.Command 对象. 之后，可以使用 Command 对象的 Execute 方法来启动应用程序.
-func NewSoloCMSCommand() *cobra.Command {
+// Newweb_complierCommand 创建一个 *cobra.Command 对象. 之后，可以使用 Command 对象的 Execute 方法来启动应用程序.
+func Newweb_complierCommand() *cobra.Command {
 	cmd := &cobra.Command{
 		// 指定命令的名字，该名字会出现在帮助信息中
-		Use: "solocms",
+		Use: "web_complier",
 		// 命令的简短描述
 		Short: "A good Go practical project",
 		// 命令的详细描述
 		Long: `A good Go practical project, used to create user with basic information.
 
-Find more solocms information at:
-	https://github.com/dengmengmian/solocms#readme`,
+Find more web_complier information at:
+	https://github.com/dengmengmian/web_complier#readme`,
 
 		// 命令出错时，不打印帮助信息。不需要打印帮助信息，设置为 true 可以保持命令出错时一眼就能看到错误信息
 		SilenceUsage: true,
@@ -71,7 +71,7 @@ Find more solocms information at:
 	// 在这里您将定义标志和配置设置。
 
 	// Cobra 支持持久性标志(PersistentFlag)，该标志可用于它所分配的命令以及该命令下的每个子命令
-	cmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "The path to the solocms configuration file. Empty string for no configuration file.")
+	cmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", "", "The path to the web_complier configuration file. Empty string for no configuration file.")
 
 	// Cobra 也支持本地标志，本地标志只能在其所绑定的命令上使用
 	cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")

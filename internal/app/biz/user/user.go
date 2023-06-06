@@ -1,19 +1,19 @@
 // Copyright 2023 Innkeeper dengmengmian(麻凡) <my@dengmengmian.com>. All rights reserved.
 // Use of this source code is governed by a Apache style
 // license that can be found in the LICENSE file. The original repo for
-// this file is https://github.com/dengmengmian/solocms
+// this file is https://github.com/dengmengmian/web_complier
 
 package user
 
 import (
 	"context"
 	"regexp"
-	"solocms/internal/pkg/errno"
-	"solocms/internal/pkg/model"
-	"solocms/internal/solocms/store"
-	v1 "solocms/pkg/api/v1"
-	"solocms/pkg/auth"
-	"solocms/pkg/token"
+	"web_complier/internal/app/store"
+	"web_complier/internal/pkg/errno"
+	"web_complier/internal/pkg/model"
+	v1 "web_complier/pkg/api/v1"
+	"web_complier/pkg/auth"
+	"web_complier/pkg/token"
 
 	"github.com/jinzhu/copier"
 )

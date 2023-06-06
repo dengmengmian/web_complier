@@ -1,17 +1,18 @@
 // Copyright 2023 Innkeeper dengmengmian(麻凡) <my@dengmengmian.com>. All rights reserved.
 // Use of this source code is governed by a Apache style
 // license that can be found in the LICENSE file. The original repo for
-// this file is https://github.com/dengmengmian/solocms
+// this file is https://github.com/dengmengmian/web_complier
 
-package solocms
+package web_complier
 
 import (
-	"solocms/internal/pkg/core"
-	"solocms/internal/pkg/errno"
-	"solocms/internal/pkg/log"
-	"solocms/internal/pkg/middleware"
-	"solocms/internal/solocms/controller/v1/user"
-	"solocms/internal/solocms/store"
+	"web_complier/internal/app/controller/v1/complier"
+	"web_complier/internal/app/controller/v1/user"
+	"web_complier/internal/app/store"
+	"web_complier/internal/pkg/core"
+	"web_complier/internal/pkg/errno"
+	"web_complier/internal/pkg/log"
+	"web_complier/internal/pkg/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,6 +32,7 @@ func installRouters(g *gin.Engine) error {
 	})
 
 	uc := user.New(store.S)
+	cm := complier.New(store.S)
 
 	g.POST("/login", uc.Login)
 
@@ -43,6 +45,11 @@ func installRouters(g *gin.Engine) error {
 			userv1.POST("", uc.Create)
 			userv1.PUT(":name/change-password", uc.ChangePassword)
 			userv1.Use(middleware.Authn())
+		}
+
+		complierV1 := v1.Group("/complier")
+		{
+			complierV1.POST("", cm.Run)
 		}
 	}
 

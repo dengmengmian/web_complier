@@ -1,18 +1,20 @@
 // Copyright 2023 Innkeeper dengmengmian(麻凡) <my@dengmengmian.com>. All rights reserved.
 // Use of this source code is governed by a Apache style
 // license that can be found in the LICENSE file. The original repo for
-// this file is https://github.com/dengmengmian/solocms
+// this file is https://github.com/dengmengmian/web_complier
 
 package biz
 
 import (
-	"solocms/internal/solocms/biz/user"
-	"solocms/internal/solocms/store"
+	"web_complier/internal/app/biz/complier"
+	"web_complier/internal/app/biz/user"
+	"web_complier/internal/app/store"
 )
 
 // IBiz 定义了 Biz 层需要实现的方法.
 type IBiz interface {
 	Users() user.UserBiz
+	Complier() complier.ComplierBiz
 }
 
 // 确保 biz 实现了 IBiz 接口.
@@ -34,4 +36,9 @@ func NewBiz(ds store.IStore) *biz {
 // Users 返回一个实现了 UserBiz 接口的实例.
 func (b *biz) Users() user.UserBiz {
 	return user.New(b.ds)
+}
+
+// Complier 返回一个实现了 ComplierBiz 接口的实例.
+func (b *biz) Complier() complier.ComplierBiz {
+	return complier.New(b.ds)
 }
