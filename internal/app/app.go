@@ -85,9 +85,9 @@ Find more web_complier information at:
 // run 函数是实际的业务代码入口函数.
 func run() error {
 	// 初始化 store 层
-	if err := initStore(); err != nil {
-		return err
-	}
+	// if err := initStore(); err != nil {
+	// 	return err
+	// }
 
 	// 设置 token 包的签发密钥，用于 token 包 token 的签发和解析
 	token.Init(viper.GetString("jwt-secret"), known.XUsernameKey)
